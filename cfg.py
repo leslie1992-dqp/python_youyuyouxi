@@ -1,0 +1,11 @@
+SCREENSIZE = (800, 600)
+FPS = 20
+BLOCKSIZE = 15
+MAZESIZE = (34, 32)
+BORDERSIZE = (25, 40)
+man = 'D:/yysc/man_1.png'
+girl = 'D:/yysc/girl_0.png'
+bili = 'D:/yysc/bili.png'
+xiaolian = 'D:/yysc/hero.png'
+ico = 'D:/yysc/ico.png'
+renwu = [man,girl,bili,xiaolian,ico]
