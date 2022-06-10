@@ -1,4 +1,5 @@
 import baoxiang
+from collections import Counter
 import caiquan
 import jiemian
 import mi_gong
@@ -59,62 +60,77 @@ def fn13():
 def fn_sure():
 
     canshu.jilu.append(canshu.wanjia)
-    '''
-    if jilu[huihe] == 0:
-        if wanjia ==0:
-            cishu['jiandao'][0] += 1
-        elif wanjia ==1:
-            cishu['jiandao'][1] += 1
+    if len(canshu.jilu) == 1:
+        canshu.diannan = random.randint(0,2)
+    else:
+        results = Counter(canshu.jilu)
+        max = results.most_common(1)[0][0]
+        if max == 0:
+            canshu.diannao = 1
+        elif max == 1:
+            canshu.diannao = 2
         else:
-            cishu['jiandao'][2] += 1
-    elif jilu[huihe] == 1:
-        if wanjia ==0 :
-            cishu['shitou'][0] += 1
-        elif wanjia == 1:
-            cishu['shitou'][1] += 1
-        else:
-            cishu['shitou'][2] += 1
-    elif jilu[huihe] == 2:
-        if wanjia == 0:
-            cishu['bu'][0] += 1
-        elif wanjia == 1:
-            cishu['bu'][1] += 1
-        else:
-            cishu['bu'][2] += 1
+            canshu.diannao = 0
 
-    if jilu[huihe] == 0:
-        huoqu = cishu.get('jiandao')
-        if huoqu[0] >= huoqu[1] and huoqu[0] >= huoqu[2]:
-            max = 0
-        elif huoqu[1] >= huoqu[0] and huoqu[1] >= huoqu[2]:
-            max = 1
-        else:
-            max = 2
-    elif jilu[huihe] == 1 :
-        huoqu = cishu.get('shitou')
-        if huoqu[0] >= huoqu[1] and huoqu[0] >= huoqu[2]:
-            max = 0
-        elif huoqu[1] >= huoqu[0] and huoqu[1] >= huoqu[2]:
-            max = 1
-        else:
-            max = 2
-    elif jilu[huihe] == 2:
-        huoqu = cishu.get('bu')
-        if huoqu[0] >= huoqu[1] and huoqu[0] >= huoqu[2]:
-            max = 0
-        elif huoqu[1] >= huoqu[0] and huoqu[1] >= huoqu[2]:
-            max = 1
-        else:
-            max = 2
 
-    if max == 0:
-        diannao = 1
-    elif max == 1:
-        diannao = 2
-    elif max == 2:
-        diannao = 0
     '''
-    canshu.diannao = 2
+    if canshu.huihe > 0 :
+        if canshu.jilu[canshu.huihe - 1] == 0:
+            if canshu.wanjia == 0:
+                canshu.cishu['jiandao'][0] += 1
+            elif canshu.wanjia == 1:
+                canshu.cishu['jiandao'][1] += 1
+            else:
+                canshu.cishu['jiandao'][2] += 1
+        elif canshu.jilu[canshu.huihe - 1] == 1:
+            if canshu.wanjia == 0:
+                canshu.cishu['shitou'][0] += 1
+            elif canshu.wanjia == 1:
+                canshu.cishu['shitou'][1] += 1
+            else:
+                canshu.cishu['shitou'][2] += 1
+        elif canshu.jilu[canshu.huihe - 1] == 2:
+            if canshu.wanjia == 0:
+                canshu.cishu['bu'][0] += 1
+            elif canshu.wanjia == 1:
+                canshu.cishu['bu'][1] += 1
+            else:
+                canshu.cishu['bu'][2] += 1
+
+        if canshu.jilu[canshu.huihe - 1] == 0:
+            huoqu = canshu.cishu.get('jiandao')
+            if huoqu[0] >= huoqu[1] and huoqu[0] >= huoqu[2]:
+                max = 0
+            elif huoqu[1] >= huoqu[0] and huoqu[1] >= huoqu[2]:
+                max = 1
+            else:
+                max = 2
+        elif canshu.jilu[canshu.huihe - 1] == 1:
+            huoqu = canshu.cishu.get('shitou')
+            if huoqu[0] >= huoqu[1] and huoqu[0] >= huoqu[2]:
+                max = 0
+            elif huoqu[1] >= huoqu[0] and huoqu[1] >= huoqu[2]:
+                max = 1
+            else:
+                max = 2
+        elif canshu.jilu[canshu.huihe - 1] == 2:
+            huoqu = canshu.cishu.get('bu')
+            if huoqu[0] >= huoqu[1] and huoqu[0] >= huoqu[2]:
+                max = 0
+            elif huoqu[1] >= huoqu[0] and huoqu[1] >= huoqu[2]:
+                max = 1
+            else:
+                max = 2
+
+        if max == 0:
+            canshu.diannao = 1
+        elif max == 1:
+            canshu.diannao = 2
+        elif max == 2:
+            canshu.diannao = 0
+    else:
+        canshu.diannao = random.randint(0,2)
+    '''
     if caiquan.panduan(canshu.wanjia,canshu.diannao) == 0 :
         canshu.huihe += 1
         canshu.wanjia_score += 1

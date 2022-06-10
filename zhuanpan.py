@@ -1,5 +1,6 @@
-
-from jiemian import *
+import jiemian
+from Button import button
+import sys
 from canshu import *
 import math
 import other_f
@@ -34,6 +35,7 @@ def end(suger):
         ft1_surf = font1.render(text1, True, 'red')
         text_score = "score: " + str(flag)
         ft_surf = font1.render(text_score, True, 'black')
+        #围绕着一个点转的秘诀
         posx = 400 + int(150 * math.sin(r * math.pi / 180))
         posy = 300 + int(150 * math.cos(r * math.pi / 180))
         window.fill('white')
@@ -60,6 +62,7 @@ def start1():
     while True:
         posx = 400 + int(150 * math.sin(r * math.pi / 180))
         posy = 300 + int(150 * math.cos(r * math.pi / 180))
+        print(posx,posy)
         ft1_surf = font1.render(text1, True, 'red')
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

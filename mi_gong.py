@@ -7,7 +7,7 @@ import other_f
 
 
 def migongyouxi(cfg):
-    
+
     # 初始化
     pygame.mixer.init()
     pygame.font.init()
@@ -33,33 +33,39 @@ def migongyouxi(cfg):
                     pygame.quit()
                     sys.exit(-1)
                 elif event.type == pygame.KEYDOWN:
+
                     if event.key == pygame.K_UP:
                         is_move = hero_now.move('up', maze_now)
                         canshu.keyizou_sound.play()
+
                     elif event.key == pygame.K_DOWN:
                         is_move = hero_now.move('down', maze_now)
                         canshu.keyizou_sound.play()
+
                     elif event.key == pygame.K_LEFT:
                         is_move = hero_now.move('left', maze_now)
                         canshu.keyizou_sound.play()
+
                     elif event.key == pygame.K_RIGHT:
                         is_move = hero_now.move('right', maze_now)
                         canshu.keyizou_sound.play()
+
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
                         pos = pygame.mouse.get_pos()
                         if qiehuan.rect.collidepoint(pos):
                             qiehuan.call_back()
-
+            '''加上步数，若可以走，则加一，反之，加零'''
             num_steps += int(is_move)
             hero_now.draw(screen)
             maze_now.draw(screen)
             qiehuan.draw(screen)
             showText(screen, font, 'STEPS: %s' % num_steps, (255, 0, 0), (570, 100))
-            showText(screen, font, "MAX steps : 500", (0, 0, 0), (570, 150))
+            showText(screen, font, "MAX steps : %s" % maze_now.step_num, (0, 0, 0), (570, 150))
             showText(screen, font, 'S: birthing place', (0, 0, 0), (570, 200))
             showText(screen, font, 'D: finishing place', (0, 0, 0), (570, 250))
-            # ----判断游戏是否胜利
+
+            # 判断游戏是否胜利
             if num_steps > 500:
                 jiemian.enddd()
             if (hero_now.coordinate[0] == cfg.MAZESIZE[1] - 1) and (hero_now.coordinate[1] == cfg.MAZESIZE[0] - 1):

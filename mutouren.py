@@ -1,6 +1,5 @@
 
 import sys
-
 import jiemian
 from canshu import *
 
@@ -66,15 +65,7 @@ def mutouren1():
                 if event.key == pygame.K_SPACE:
                     man_status = 0
                     keyizou_sound.play()
-                '''
-                if (event.key == pygame.K_SPACE) & (gameover_status != 0):
-                    man_status = 0
-                    gameover_status = 0
-                    man_rect.centerx = 100
-                    man_rect.centery = 500
-                    pos_x = 100
-                    pos_y = 500
-                  '''
+
             elif event.type == manFLAP:
                 #不断变换图像，实现走动的效果
                 if man_index < 6:

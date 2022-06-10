@@ -50,6 +50,7 @@ man_rect = man_surface.get_rect(center=(100, 500))
 manFLAP = pygame.USEREVENT + 1
 pos_x = 100
 pos_y = 500
+#每个一段时间去做一件事
 pygame.time.set_timer(manFLAP, 20)
 light_status = 0
 
@@ -67,7 +68,7 @@ score_sound_countdown = 100
 
 
 #转盘的变量
-ctime = 20
+ctime = 10
 r = -90
 flag = 0
 timer_event = pygame.USEREVENT + 1

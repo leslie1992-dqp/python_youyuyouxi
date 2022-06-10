@@ -1,8 +1,8 @@
 SCREENSIZE = (800, 600)
 FPS = 20
-BLOCKSIZE = 15
-MAZESIZE = (34, 32)
-BORDERSIZE = (25, 40)
+BLOCKSIZE = 46   #迷宫的宽度
+MAZESIZE = (10, 10)   #迷宫长和宽的格子的个数
+BORDERSIZE = (25, 40)     #边境的大小，距离边框的大小
 man = 'D:/yysc/man_1.png'
 girl = 'D:/yysc/girl_0.png'
 bili = 'D:/yysc/bili.png'
